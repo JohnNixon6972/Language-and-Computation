@@ -1,0 +1,52 @@
+S -> NP[NUM=?n] VP[TENSE=?t, NUM=?n , SUBCAT=nil]
+
+S -> WH Aux S
+
+NP[NUM=?n] -> N[NUM=?n] | ProperNoun[NUM=?n] | Adj | NP CONJ
+
+CONJ -> Conj NP
+
+
+VP[NUM=?n, TENSE=?t, SUBCAT=?rest] -> VP[NUM=?n, TENSE=?t, SUBCAT=[HEAD=?arg, TAIL=?rest]] ARG[CAT=?arg]
+VP[NUM=?n, TENSE=?t, SUBCAT=?args] -> V[NUM=?n, TENSE=?t, SUBCAT=?args]
+VP[NUM=?n, TENSE=?t, SUBCAT=[HEAD='np', TAIL='nil']] -> Adv VP[NUM=?n, TENSE=?t, SUBCAT=?args]
+
+
+ARG[CAT=?c] -> NP | DET
+ARG[CAT=?c] -> NP PREP | NP DET | NP VP[SUBCAT=?c]
+
+PREP -> Prep | PREP NP | PREP DET 
+
+DET[NUM=?n] -> DET[NUM='sg'] NP | Det[NUM='sg'] | Det[NUM='pl'] PREP
+
+
+V[TENSE=pres, NUM=sg, SUBCAT=[HEAD=np,TAIL=nil]] -> 'plays'
+V[TENSE=pres, NUM=pl] -> 'play'
+
+ProperNoun[NUM=sg] -> 'Bart' | 'Homer' | 'Lisa'
+
+V[TENSE=past, NUM=?n, SUBCAT=nil] -> 'giggled'
+V[TENSE=pres, NUM=sg, SUBCAT=nil]-> 'giggles'
+V[TENSE=pres, NUM=sg, SUBCAT=[HEAD=np, TAIL=det]]-> 'thinks'
+
+V[TENSE=pres, NUM=sg, SUBCAT=[HEAD=np,TAIL=nil]]-> 'serves' | 'drink' | 'drinks'
+V[TENSE=pres, NUM=sg]-> 'wears'
+V[TENSE=pres, NUM=sg, SUBCAT=[HEAD=np, TAIL=np]]-> 'puts'
+V[TENSE=past, NUM=sg, SUBCAT=[HEAD=np,TAIL=nil]] -> 'drank'
+
+V ->  'wear'
+Adj -> 'blue' | 'green' | 'healthy'
+N[NUM=sg] -> 'kitchen' | 'dinner' | 'milk' | 'salad' | 'jazz'
+
+N[NUM=pl] -> 'shoes'
+Conj -> 'and' | 'when'
+Adv -> 'always' | 'never' | 'when'
+Prep -> 'in' | 'after'
+Det -> 'the'
+Det[NUM=sg] -> 'a'
+
+Aux -> 'does' | 'do'
+
+WH -> 'when'
+
+
